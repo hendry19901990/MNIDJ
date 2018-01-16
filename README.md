@@ -39,31 +39,31 @@ The following Ethereum hex encoded address `0x00521965e7bd230323c423d96c657db5b7
 
 It would be trivial to add shard ids, fork descriptors (block number and hash) etc to the address. It would also be trivial to encode other kinds of identities that don't correspond directly to an address on a chain.
 
-## Javascript reference implementation
+## Java reference implementation
 
 ```js
 > Mnid.encode(
   (byte) 0x1, // networkID the hex encoded network id or for private chains the hex encoded first 4 bytes of the genesis hash
   address: "0x00521965e7bd230323c423d96c657db5b79d099f" // Address Ethereum
-})
+});
 '2nQtiQG6Cgm1GYTBaaKAgr76uY7iSexUkqX'
 
-> Mnid.decode('2nQtiQG6Cgm1GYTBaaKAgr76uY7iSexUkqX')
+> Mnid.decode('2nQtiQG6Cgm1GYTBaaKAgr76uY7iSexUkqX');
 { networkId: '1', 
   address: '0x00521965e7bd230323c423d96c657db5b79d099f' }
 
 // Check if string is a valid MNID
 
-> Mnid.isMNID('2nQtiQG6Cgm1GYTBaaKAgr76uY7iSexUkqX')
+> Mnid.isMNID('2nQtiQG6Cgm1GYTBaaKAgr76uY7iSexUkqX');
 true
 
-> Mnid.isMNID('0x00521965e7bd230323c423d96c657db5b79d099f')
+> Mnid.isMNID('0x00521965e7bd230323c423d96c657db5b79d099f');
 false
 
-> Mnid.isMNID('1GbVUSW5WJmRCpaCJ4hanUny77oDaWW4to')
+> Mnid.isMNID('1GbVUSW5WJmRCpaCJ4hanUny77oDaWW4to');
 false
 
-> Mnid.isMNID('QmXuNqXmrkxs4WhTDC2GCnXEep4LUD87bu97LQMn1rkxmQ')
+> Mnid.isMNID('QmXuNqXmrkxs4WhTDC2GCnXEep4LUD87bu97LQMn1rkxmQ');
 false
 ```
 
