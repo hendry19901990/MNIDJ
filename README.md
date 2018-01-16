@@ -39,7 +39,39 @@ The following Ethereum hex encoded address `0x00521965e7bd230323c423d96c657db5b7
 
 It would be trivial to add shard ids, fork descriptors (block number and hash) etc to the address. It would also be trivial to encode other kinds of identities that don't correspond directly to an address on a chain.
 
+## Add the relevant dependency to your project:
+
+# Maven
+```
+<repositories>
+	<repository>
+		<id>jitpack.io</id>
+		<url>https://jitpack.io</url>
+	</repository>
+</repositories>
+
+<dependency>
+	<groupId>com.github.hendry19901990</groupId>
+	<artifactId>MNID</artifactId>
+	<version>master</version>
+</dependency>
+```
+
+# Gradle
+```
+allprojects {
+	repositories {
+		maven { url 'https://jitpack.io' }
+	}
+}
+
+dependencies {
+	compile 'com.github.hendry1990:MNID:master'
+}
+```
+
 ## Java reference implementation
+
 
 ```js
 > Mnid.encode(
