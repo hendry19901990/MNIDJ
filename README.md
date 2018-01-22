@@ -66,7 +66,7 @@ allprojects {
 }
 
 dependencies {
-	compile 'com.github.hendry1990:MNID:master'
+	compile 'com.github.hendry19901990:MNID:master'
 }
 ```
 
