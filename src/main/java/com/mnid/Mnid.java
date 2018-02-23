@@ -7,8 +7,6 @@ import com.mnid.model.MnidObject;
 import com.mnid.util.Base58;
 
 import java.math.BigInteger;
-import java.nio.ByteBuffer;
-
 import org.apache.commons.lang3.ArrayUtils;
 
 public class Mnid {
