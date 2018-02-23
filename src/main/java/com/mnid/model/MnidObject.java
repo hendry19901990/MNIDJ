@@ -2,20 +2,23 @@ package com.mnid.model;
 
 public class MnidObject {
 	
-	private byte networkId;
+	private long networkId;
 	private String address;
 	
 	public MnidObject(){}
 	
-	public MnidObject(byte networkId, String address){
+	public MnidObject(long networkId, String address){
 		this.networkId = networkId;
 		this.address = address;
 	}
 	
-	public byte getNetworkId() {
+	public long getNetworkId() {
 		return networkId;
 	}
-	public void setNetworkId(byte networkId) {
+	public String getNetworkIdHex() {
+		return Long.toHexString(networkId);
+	}
+	public void setNetworkId(long networkId) {
 		this.networkId = networkId;
 	}
 	public String getAddress() {

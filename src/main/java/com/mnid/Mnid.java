@@ -6,18 +6,21 @@ import org.bouncycastle.util.encoders.Hex;
 import com.mnid.model.MnidObject;
 import com.mnid.util.Base58;
 
+import java.math.BigInteger;
+import java.nio.ByteBuffer;
+
 import org.apache.commons.lang3.ArrayUtils;
 
 public class Mnid {
-		
+			
 	/*
 	 * Receive id of Network and Ethereum Address
 	 * return mnid
 	 */
-	public static String encode(byte id, String address){
+	public static String encode(byte[] id, String address){
 		
 		byte[] version   = {1};
-		byte[] networkId = {id};
+		byte[] networkId = id;
 		String addressFormat = (address.contains("0x")) ? address.substring(2) : address;
 		byte[] addressArray    = hexStringToByteArray(addressFormat);
 		
@@ -42,8 +45,14 @@ public class Mnid {
 		byte[] addressArray = ArrayUtils.subarray(data, netLength, 20 + netLength);
 		byte[] check = ArrayUtils.subarray(data, netLength + 20, data.length);
 		
+		StringBuffer result = new StringBuffer();
+		for(byte n : network)
+			result.append(String.format("%02X", n));
+		
+		long networkId = new BigInteger(result.toString(), 16).longValue();
+		
 		if (ArrayUtils.isEquals(check, checksum(version, network, addressArray))){
-			return new MnidObject(network[0], "0x" + Hex.toHexString(addressArray));
+			return new MnidObject(networkId, "0x" + Hex.toHexString(addressArray));
 		}else{
 			throw new Exception("Invalid address checksum");
 		}
